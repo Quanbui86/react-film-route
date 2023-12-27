@@ -1,0 +1,119 @@
+h1, h2, h3, h4 {
+    margin: 0;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    box-shadow: 0px 0px 1px 0px gray;
+    /*opacity: 0;*/
+}
+.nav {
+    margin: 0;
+    padding: 0 0rem 0 10rem;
+    display: flex;
+    flex-direction: row;
+    flex: 3 0 2rem;
+    align-items: center;
+    justify-content: space-evenly ;    
+}
+.logo {
+    flex: 1 0 2rem;
+    display: flex;
+    min-width: 10rem;
+    align-items: center;
+    justify-content: center;
+}
+.logo img {
+    cursor: pointer;
+    width: auto;
+    height: 50px;
+}
+.navItem {
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+.footer {
+    display: flex;
+    height: 70px;
+    border-top: 1px solid gray;
+    box-shadow: 1px 0px 0px 0px gray;
+    justify-content: center;
+}
+.footerText{
+    display: flex;
+    align-items: center;
+}
+#regSection, #logSection, #homePage {
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#homePage {
+
+}
+.detailPage{
+    display: flex;
+    justify-content: center;
+}
+.group {
+    display: flex;
+    flex-direction: row;
+}
+.container {
+    position: relative;
+    border: solid gray 1px;
+    border-radius: 3px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 1px 0px gray;
+}
+.filmList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.filmItem {
+    width: 100%;
+    padding: 1rem 2rem;
+    height: 10rem;
+    display: flex;
+}
+.left {
+    display: flex;
+    align-items: center;
+    flex: 1 1 10rem;
+}
+.right {
+    flex: 1 1 10rem;
+}
+.focus {
+    opacity: 1;
+    color: green;
+    background-color:aliceblue;
+    transition: all 0.5s linear 0.2s;
+}
+.visible {
+    opacity: 1;
+    transition: all 0.5s linear 0.2s;
+}
+.invisible {
+    opacity: 0;
+    transition: all 0.5s linear 0.2s;
+}
+.main {
+    min-height: 80svh;
+}
