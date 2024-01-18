@@ -34,7 +34,7 @@ export default function Search({ isScrolling }) {
     }
     const [page, setPage] = useState(1)
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/search/movie?query=${searchParams.search}&include_adult=false&language=en-US&page=${page}`
+        const url = `https://api.themoviedb.org/3/search/multi?query=${searchParams.search}&include_adult=false&language=en-US&page=${page}`
         get('get', url)
             .then(resp => {
                 setSeachData(resp)
