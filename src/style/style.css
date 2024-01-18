@@ -152,7 +152,7 @@ h4 {
     flex-direction: column;
     position: absolute;
     top: 50px;
-    height: 20.5rem;
+    height: 80svh;
     width: 101%;
     background-color: #131f29;
     border-radius: 15px;
