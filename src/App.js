@@ -1,17 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
-import Root from './components/Root'
+import Body from './components/Body'
 import Film from './pages/filmDetailPage';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Home from './pages/Home';
 import Genres from './pages/Genres';
+import SearchPage from './pages/SearchPage';
+import FavouriteMovies from './pages/FavouriteMovies';
 const appRouter = createBrowserRouter(createRoutesFromElements(
-<Route path='/' element={<Root/>}>
+<Route path='/react-film-route' element={<Body/>}>
   <Route index element={<Home/>}/>
-  <Route path="/:genreName" element={<Genres/>}/>
-  <Route path="/:genreName/:filmId" element={<Film/>}/>
+  <Route path=":movieListItem/page/:page" element={<Genres/>}/>
+  <Route path=":genreName/:filmId" element={<Film/>}/>
+  <Route path="search/:filmId" element={<Film/>}/>
+  <Route path="search-results/page/:page" element={<SearchPage/>}/>
+  <Route path="favourite" element={<FavouriteMovies/>}/>
 </Route>
 ))
+//  <Route path=":movieListName" element={<Home/>}/>
+
 function App() {
   return (
     <RouterProvider router={appRouter}/>

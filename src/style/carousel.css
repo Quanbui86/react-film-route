@@ -1,0 +1,323 @@
+#app {
+    height: 100%;
+}
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+/*
+swiper-container {
+    height: 100%;
+    width: 100%;
+}
+swiper-slide {
+    height: 100%;
+    width: 100%;
+}
+swiper-slide img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+*/
+/*sm-carousel*/
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+.sm-carousel-positon {
+    width: 100%;
+    z-index: 3;
+}
+.sm-carousel {
+    width: 100%;
+    height: 20rem ;
+    position: relative;
+    background-color: rgba(18, 23, 28, 0);
+    overflow: hidden;
+}
+.sm-swiper-slide {
+    width: 100%;
+    height: inherit;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sm-swiper-slide img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.sm-fore-ground-carousel {
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+    opacity: 0.5;
+    box-shadow: inset 100px 0px 100px 10px #000000;
+    pointer-events: none;
+}
+.sm-background-top-gradient {
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(27, 45, 60, 1), rgba(255, 255, 255, 0));
+    z-index: 4;
+    top: 0rem;
+}
+.sm-background-gradient {
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(to top, rgba(27, 45, 60, 1), rgba(255, 255, 255, 0));
+    z-index: 4;
+    bottom: 0;
+}
+.sm-carousel-group {
+    position: absolute;
+    left: 2rem;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 10rem;
+    padding: 1rem;
+    z-index: 4;
+}
+.sm-carousel-title {
+    position: relative;
+    color: white;
+    mix-blend-mode: difference;
+    opacity: 0.6;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    max-width: 20rem;
+    font-family: 'Rubik Doodle Triangles', system-ui;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+.sm-carousel-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 1rem;
+    width: 100%;
+    min-width: 22rem;
+    gap: 5px;
+}
+
+.sm-carousel-button1,
+.sm-carousel-button2 {
+    width: auto;
+    height: 2.5rem;
+    border-radius: 50px;
+    outline: none;
+    border: gray solid 1px;
+    padding: 0 2rem;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.sm-carousel-button-icon {
+    margin-right: 5px;
+    font-size: 1.5rem;
+}
+
+.sm-carousel-overview {
+    display: flex;
+}
+
+.sm-carousel-overview-text {
+    font-family: 'Mali', cursive;
+    text-align: left;
+    font-size: 1rem;
+    color: whitesmoke;
+    mix-blend-mode: difference;
+    width: 100%;
+}
+
+.sm-carousel-view-detail {
+    cursor: pointer;
+    padding-left: 0.5rem;
+    color: rgb(212, 212, 212);
+    mix-blend-mode: difference;
+}
+
+.sm-carousel-view-icon {
+    font-size: 1rem;
+    position: relative;
+    top: 4px;
+    font-weight: 600;
+}
+.movie-info-to-show {
+    position: relative;
+    top:-20rem;
+    width: 20rem;
+    height: 30rem;
+    background-color:cadetblue;
+    z-index: 99;
+    border-radius: 5px;
+}
+/*.carousel {
+    width: 100%;
+    height: 100svh;
+    position: relative;
+    background-color: rgba(18, 23, 28, 0);
+}
+
+.fore-ground-carousel {
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+    opacity: 0.5;
+    box-shadow: inset 300px 0px 1000px 10px #000000;
+    pointer-events: none;
+}
+
+.background-gradient {
+    position: absolute;
+    height: 200px;
+    width: 100%;
+    background: linear-gradient(to top, rgba(27, 45, 60, 1), rgba(27, 45, 60, 0));
+    z-index: 4;
+    bottom: 0;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-group {
+    position: absolute;
+    left: 5rem;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25.5rem;
+    padding: 1rem;
+    z-index: 4;
+}
+
+.carousel-title {
+    position: relative;
+    color: white;
+    opacity: 0.6;
+    border-radius: 5px;
+    font-size: 2.8rem;
+    max-width: 50rem;
+    font-family: 'Rubik Doodle Triangles', system-ui;
+    line-height: 1;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.carousel-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 1rem;
+    width: 100%;
+    min-width: 22rem;
+    gap: 5px;
+}
+
+.carousel-button1,
+.carousel-button2 {
+    width: auto;
+    height: 2.5rem;
+    border-radius: 50px;
+    outline: none;
+    border: gray solid 1px;
+    padding: 0 2rem;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-button-icon {
+    margin-right: 5px;
+    font-size: 1.5rem;
+}
+
+.carousel-overview {
+    display: flex;
+}
+
+.carousel-overview-text {
+    font-family: 'Mali', cursive;
+    text-align: left;
+    font-size: 1rem;
+    color: whitesmoke;
+    mix-blend-mode: difference;
+    width: 100%;
+}
+
+.carousel-view-detail {
+    cursor: pointer;
+    padding-left: 0.5rem;
+    color: gray;
+}
+
+.carousel-view-icon {
+    font-size: 1.5rem;
+    position: relative;
+    top: 4px;
+    font-weight: 600;
+}
+*/

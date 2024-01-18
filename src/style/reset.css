@@ -9,9 +9,12 @@
     - The "symbol *" part is to solve Firefox SVG sprite bug
     - The "html" attribute is exclud, because otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
  */
-*:where(:not(html, iframe, canvas, img, svg, video, audio, ::placeholder, ul, p):not(svg *, symbol *)) {
+*:where(:not(html, iframe, canvas, img, svg, video, audio, ::placeholder):not(svg *, symbol *)) {
     all: unset;
     display: revert;
+}
+p {
+    all: unset;
 }
 ul {
     margin: 0;
@@ -103,4 +106,7 @@ input {
 /* Revert Modal native behavior */
 :where(dialog:modal) {
     all: revert;
+}
+*, * * {
+    box-sizing: border-box;
 }

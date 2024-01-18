@@ -1,78 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../style/reset.css'
 import '../style/style.css'
-import Genres from './Genres';
-
-
+import Aside from '../components/Aside';
+import { get } from '../services/api';
+import { useOutletContext } from 'react-router-dom';
+import Carousel from '../components/Carousel';
+import ChangePage from '../components/ChangePage';
+import MovieGrid from '../components/MovieGrid';
 function Home() {
-  const [data, setData] = useState(null)
-  const [filmData, setFilmData] = useState(null)
-  const [selectedGenreName, setSelectedGenreName] = useState('');
-  const [selectedGenreId, setSelectedGenreId] = useState('');
-  const [isLoading, setIsLoading] = useState(false)
-  const [isFilmLoading, setIsFilmLoading] = useState(false)
+  const { isScrolling, genresData } = useOutletContext();
+  const [allmovieData, setAllmovieData] = useState(null)
+  const [page, setPage] = useState(1)
   const navigate = useNavigate();
+
   useEffect(() => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODhlZmU3YTIyZmM1NWJlM2IyOTg3ZjE1ZWNmNDFlNCIsInN1YiI6IjY1NGYyNjQ0MjkzODM1NDNmNDg2MDkyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FWHK4DfBohjiYyiqykkvprCiNY1BvLDR2mbePlzhzII'
-      }
-    };
-    fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
-      .then(response => response.json())
-      .then(response => {
-        setData(response)
-        setIsLoading(true)
+    let url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${1}`;
+    get('get', url)
+      .then(resp => {
+        setAllmovieData(resp)
       })
-      .catch(err => console.error(err));
+  }, [page]);
+  const handleClick = (movie) => {
+    const selectedGenre = genresData.genres.find(genre => genre.id === Number(movie.genre_ids[0]));
+    navigate(`${selectedGenre.name}/${movie.id}`)
+  }
 
-    if (isLoading) {
-      fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${selectedGenreId}`, options)
-        .then(response => response.json())
-        .then(response => {
-          console.log(response)
-          setFilmData(response)
-          setIsFilmLoading(true)
-        })
-        .catch(err => console.error(err));
-
-    }
-  }, [selectedGenreId])
-  const handleSelectChange = (event) => {
-    const selectedGenre = data.genres.find(genre => genre.id === Number(event.target.value));
-    setSelectedGenreId(selectedGenre.id);
-    setSelectedGenreName(selectedGenre.name);
-    navigate(`/${selectedGenre.name}`)
-  };
-  /*
-    <Genres
-    isFilmLoading={isFilmLoading} 
-    isLoading={isLoading}
-    data={data}
-    handleSelectChange={handleSelectChange}
-    filmData={filmData}
-    selectedGenreId={selectedGenreId}
-    selectedGenreName={selectedGenreName}
-    />
-  */
- 
   return (
-    <div>
-      {<select onChange={handleSelectChange}>
-        <option value="">Choose one...</option>
-        {isLoading ? data.genres.map((genre, index) => (
-          <option key={index} value={genre.id}>
-            {genre.name}
-          </option>
-        )) : 'loading film'}
-      </select>}
-      {selectedGenreId &&
-        filmData &&
-        <ul>{filmData.results.map((film, index) => <li key={index}><Link to={`/${selectedGenreName}/${film.id}`}>{film.title}</Link></li>)}</ul>}
+    <div className={`z-index-4 pageSetup home-bg position-relative`}>
+      <div className={`z-index-0 ${isScrolling ? `top-11rem-height` : 'top-11rem-height'}`}></div>
+      <Carousel />
+      <div className='container'>
+        <div className='main-container home-contain'>
+          <div className='main-title'>
+            <h3>Now Playing Movies<div className='line'></div></h3>
+            <div className='black-line'></div>
+          </div>
+          <MovieGrid allmovieData={allmovieData} handleClick={handleClick} />
+          <ChangePage allmovieData={allmovieData} page={page} />
+        </div>
+        <div className='aside-container home-contain'>
+          <Aside />
+        </div>
+      </div>
     </div>
   )
 }
