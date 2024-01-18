@@ -88,11 +88,10 @@ export default function Search({ isScrolling }) {
                                 className={`search-movie-img display-flex-center ${1 ? '' : ''}`}
                                 src={
                                     movie.poster_path ?
-                                        `https://image.tmdb.org/t/p/w185${movie.poster_path}` :
+                                        `https://image.tmdb.org/t/p/w342${movie.poster_path}` :
                                         movie.backdrop_path ?
                                             `https://image.tmdb.org/t/p/w300${movie.backdrop_path}` :
-
-                                            `https://image.tmdb.org/t/p/w185/qF0ZIAe1DRe49ql02KaYl04gnxt.jpg`}
+                                            `https://image.tmdb.org/t/p/original/qF0ZIAe1DRe49ql02KaYl04gnxt.jpg`}
                                 alt='movie poster' />
                         </div>
                     ) :
