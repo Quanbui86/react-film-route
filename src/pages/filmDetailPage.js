@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import { NavLink, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import '../style/reset.css'
 import '../style/style.css'
 import { get } from '../services/api';
 import Aside from '../components/Aside';
-import ChangePage from '../components/ChangePage';
 import { useOutletContext } from 'react-router-dom';
-import { CSSTransition, SwitchTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 //import Cookies
 import Cookies from 'js-cookie';
@@ -23,7 +21,7 @@ export default function Film() {
     let url = `https://api.themoviedb.org/3/tv/${filmId}?language=en-US`;
     get('get', url)
       .then(resp => {
-        if (resp.first_air_date || resp.last_air_date || resp.networks) {
+        if ((resp.first_air_date || resp.last_air_date || resp.networks) && resp.last_episode_to_air.still_path) {
           setFilmData(resp);
         } else
         throw new Error('API request failed');
