@@ -5,7 +5,7 @@ import ChangePage from '../components/ChangePage';
 import MovieGrid from '../components/MovieGrid';
 
 export default function SearchPage() {
-  
+
   const [searchParams] = useSearchParams();
   const search = searchParams.get('query');
 
@@ -20,7 +20,7 @@ export default function SearchPage() {
 
   //get search movies list - searchData.results have 20 movies per page
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`
+    const url = `https://api.themoviedb.org/3/search/multi?query=${search}&include_adult=false&language=en-US&page=${page}`
     //const url = `https://api.themoviedb.org/3/search/keyword?query=${search}&page=${page}`
     get('get', url)
       .then(resp => {

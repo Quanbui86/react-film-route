@@ -20,13 +20,31 @@ export default function Film() {
   console.log(filmId)
   const navigate = useNavigate()
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/${filmId}?language=en-US`
+    let url = `https://api.themoviedb.org/3/movie/${filmId}?language=en-US`;
     get('get', url)
       .then(resp => {
-        setFilmData(resp)
-        console.log(resp)
-      }
-      )
+        if (!resp.id || !resp.episode_run_time) {
+          throw new Error('API request failed');
+        } else
+          setFilmData(resp);
+        console.log(resp);
+      })
+      .catch(error => {
+        console.error(error);
+        url = `https://api.themoviedb.org/3/tv/${filmId}?language=en-US`;
+        get('get', url)
+          .then(resp => {
+            if (!resp.id || !resp.episode_run_time) {
+              throw new Error('API request failed');
+            } else {
+              setFilmData(resp);
+              console.log(resp);
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      });
   }, [filmId])
   const handleClickViewDetail = (slide) => {
     navigate(`/react-film-route/trending/${slide.id}`)
